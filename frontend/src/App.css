@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* @plugin "daisyui" {
+      themes: light --default, dark --prefersdark;
+      themes: light --default;
+} */
+
+
+ html {
+       @apply bg-white text-black;
+ }
+
+ html.dark {
+       @apply bg-gray-900 text-white;
+ }

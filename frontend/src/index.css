@@ -1,0 +1,168 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+.sidebar-link {
+      @apply flex items-center gap-3 px-4 py-3  transition;
+}
+*, html, body{
+      font-family: "Roboto" !important;
+}
+
+.light body{
+      @apply bg-white text-gray-900 transition-all duration-100 ease-in-out;
+}
+
+.dark body {
+      @apply bg-gray-900 text-white;
+}
+
+@keyframes bubble1 {
+      0% {
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+      }
+
+      25% {
+            transform: translate(-200px, -200px);
+            opacity: 0.8;
+      }
+
+      50% {
+            transform: translate(-400px, -400px);
+            opacity: 0.6;
+      }
+
+      75% {
+            transform: translate(-200px, -200px);
+            opacity: 0.8;
+      }
+
+      100% {
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+      }
+}
+
+@keyframes bubble2 {
+      0% {
+            transform: translate(-50%, -50%);
+            opacity: 0.4;
+      }
+
+      25% {
+            transform: translate(200px, -200px);
+            opacity: 0.7;
+      }
+
+      50% {
+            transform: translate(400px, -400px);
+            opacity: 0.5;
+      }
+
+      75% {
+            transform: translate(200px, -200px);
+            opacity: 0.7;
+      }
+
+      100% {
+            transform: translate(-50%, -50%);
+            opacity: 0.4;
+      }
+}
+
+@keyframes bubble3 {
+      0% {
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+      }
+
+      25% {
+            transform: translate(-200px, 200px);
+            opacity: 0.9;
+      }
+
+      50% {
+            transform: translate(-400px, 400px);
+            opacity: 0.7;
+      }
+
+      75% {
+            transform: translate(-200px, 200px);
+            opacity: 0.9;
+      }
+
+      100% {
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+      }
+}
+
+@keyframes bubble4 {
+      0% {
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+      }
+
+      25% {
+            transform: translate(200px, 200px);
+            opacity: 0.6;
+      }
+
+      50% {
+            transform: translate(400px, 400px);
+            opacity: 0.4;
+      }
+
+      75% {
+            transform: translate(200px, 200px);
+            opacity: 0.6;
+      }
+
+      100% {
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+      }
+}
+
+.animate-bubble1 {
+      animation: bubble1 12s infinite ease-in-out;
+}
+
+.animate-bubble2 {
+      animation: bubble2 14s infinite ease-in-out;
+}
+
+.animate-bubble3 {
+      animation: bubble3 16s infinite ease-in-out;
+}
+
+.animate-bubble4 {
+      animation: bubble4 18s infinite ease-in-out;
+}
+
+/* Profile Submit Button Animation */
+@keyframes gradient-rotate {
+      0% {
+            background-position: 0% 50%;
+      }
+
+      100% {
+            background-position: 400% 50%;
+      }
+}
+
+/* Initial border: gray */
+.border-effect {
+      background: gray;
+}
+
+/* On hover: animated gradient border */
+.border-effect:hover {
+background: linear-gradient(270deg,
+            #ff6ec4,
+            #7873f5,
+            #4ade80,
+            #ff6ec4);
+background-size: 400% 400%;
+animation: gradient-rotate 5s linear infinite;
+}
