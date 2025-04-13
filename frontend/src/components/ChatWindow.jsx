@@ -160,9 +160,7 @@ const ChatWindow = ({ selectedUser }) => {
     // Add event listeners for socket events
     socket.off("receiveMessage").on("receiveMessage", handleReceiveMessage);
     socket.off("messageSent").on("messageSent", handleMessageSent);
-    socket
-      .off("messageStatusUpdate")
-      .on("messageStatusUpdate", handleMessageStatusUpdate);
+    socket.off("messageStatusUpdate").on("messageStatusUpdate", handleMessageStatusUpdate);
 
     // Cleanup on component unmount
     return () => {

@@ -29,37 +29,3 @@ const authMiddleware = async (req, res, next) => {
 }
 
 export default authMiddleware;
-
-
-// const authMiddleware = (roles = []) => {
-//   return (req, res, next) => {
-//     try {
-//       // ✅ Corrected cookie key name
-//       const token = req.cookies.accessToken;
-//       if (!token) return res.status(401).json({ message: "Unauthorized!" });
-
-//       // ✅ Verify JWT Token
-//       const decoded = jwt.verify(token, process.env.JWT_ACCESS);
-//       req.user = decoded;
-
-//       // ✅ Role-based access control (if roles are defined)
-//       if (roles.length) {
-//         const userRoles = Array.isArray(req.user.roles)
-//           ? req.user.roles
-//           : [req.user.roles];
-//         const hasAccess = roles.some((role) => userRoles.includes(role));
-
-//         if (!hasAccess) {
-//           return res
-//             .status(403)
-//             .json({ message: "Forbidden: Insufficient permissions" });
-//         }
-//       }
-
-//       next();
-//     } catch (error) {
-//       console.error("Auth Middleware Error:", error);
-//       res.status(401).json({ message: "Invalid token" });
-//     }
-//   };
-// };
