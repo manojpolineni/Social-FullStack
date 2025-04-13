@@ -15,7 +15,7 @@ export const SocketProvider = ({ children, user }) => {
     const socket = io("https://social-fullstack-backend.onrender.com", {
       withCredentials: true,
       transports: ["websocket"],
-      reconnectionAttempts: 5,
+      // reconnectionAttempts: 5,
     });
 
     socketRef.current = socket;
