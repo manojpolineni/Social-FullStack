@@ -8,7 +8,7 @@ const ChatList = ({
   selectedUser,
   currentUserId,
 }) => {
-  const baseUrl = "https://social-fullstack-backend.onrender.com/";
+  const baseUrl = "https://social-fullstack-backend.onrender.com";
 
   const getLastMessage = (userId) => {
     if (!lastMessages || !Array.isArray(lastMessages)) return null;
