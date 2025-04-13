@@ -24,6 +24,8 @@ const server = http.createServer(app);
 // ✅ Initialize Socket.io only once
 const io = initializeSocket(server);
 
+app.set("trust proxy", 1); // Required for Render
+
 // ✅ Pass io to routes
 app.use((req, res, next) => {
   req.io = io;
