@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Auth = axios.create({
-      baseURL: 'http://localhost:9999/api',
+      baseURL: 'https://social-fullstack-backend.onrender.com/api',
       withCredentials: true,
 });
 

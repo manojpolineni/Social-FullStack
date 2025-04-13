@@ -3,7 +3,7 @@ import AuthContext from "../context/AuthContext";
 import { useForm } from "react-hook-form";
 import uploadProfilePic from "../components/UploadProfilePic.jsx";
 import Auth from "../services/api.js";
-import man from '../assets/man.jpg';
+import man from "../assets/man.jpg";
 import UsePostContext from "../context/PostContext.jsx";
 
 const Profile = () => {
@@ -17,7 +17,7 @@ const Profile = () => {
   const [isChanged, setIsChanged] = useState(false);
   const { userPosts } = useContext(UsePostContext);
 
-  const { followers, following, } = user;
+  const { followers, following } = user;
   let { _id } = user;
   let id = _id;
 
@@ -108,7 +108,7 @@ const Profile = () => {
               src={
                 preview ||
                 (user.profilePic
-                  ? `http://localhost:9999${user.profilePic}`
+                  ? `https://social-fullstack-backend.onrender.com${user.profilePic}`
                   : man)
               }
               alt="Profile"

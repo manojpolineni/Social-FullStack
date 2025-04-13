@@ -4,7 +4,7 @@ import Message from "./models/Message.js";
 export const initializeSocket = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: "http://localhost:5173", // Update with the actual frontend URL
+      origin: process.env.FRONTEND_URL, // Update with the actual frontend URL
       credentials: true,
     },
   });

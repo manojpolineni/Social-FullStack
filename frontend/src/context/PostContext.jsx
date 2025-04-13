@@ -5,7 +5,9 @@ import { io } from "socket.io-client";
 
 const UsePostContext = createContext();
 
-export const socket = io("http://localhost:9999", {autoConnect:false});
+export const socket = io("https://social-fullstack-backend.onrender.com", {
+  autoConnect: false,
+});
 
 export const PostProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
@@ -31,7 +33,7 @@ export const PostProvider = ({ children }) => {
   const fetchMyPosts = async () => {
     try {
       setLoading(true);
-      const res = await Auth.get('/post/user');
+      const res = await Auth.get("/post/user");
       setUsersPosts(res.data.posts);
       setLoading(false);
     } catch (error) {
@@ -64,7 +66,7 @@ export const PostProvider = ({ children }) => {
     });
 
     return () => {
-      socket.off("newPost"); 
+      socket.off("newPost");
     };
   }, []);
 
@@ -84,7 +86,7 @@ export const PostProvider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      socket.connect(); 
+      socket.connect();
     }
 
     return () => {

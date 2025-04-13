@@ -8,7 +8,7 @@ const ChatList = ({
   selectedUser,
   currentUserId,
 }) => {
-  const baseUrl = "http://localhost:9999";
+  const baseUrl = "https://social-fullstack-backend.onrender.com";
 
   const getLastMessage = (userId) => {
     if (!lastMessages || !Array.isArray(lastMessages)) return null;
@@ -108,9 +108,7 @@ const ChatList = ({
                     </p>
                     <div className="flex items-center gap-2">
                       {lastMsgTime && (
-                        <p className="text-xs uppercase">
-                          {lastMsgTime}
-                        </p>
+                        <p className="text-xs uppercase">{lastMsgTime}</p>
                       )}
                       {unreadCount > 0 && (
                         <div className="bg-red-500 text-xs font-semibold px-2 py-0.5 rounded-full">

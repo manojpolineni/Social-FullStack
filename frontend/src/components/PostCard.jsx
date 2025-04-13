@@ -1,15 +1,15 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { Heart, MessageCircle,Send, Ellipsis } from "lucide-react";
+import { Heart, MessageCircle, Send, Ellipsis } from "lucide-react";
 import PropTypes from "prop-types";
 import Auth from "../services/api";
 import moment from "moment";
 import CommentSection from "./Comment";
 import UsePostContext from "../context/PostContext";
-import AuthContext from '../context/AuthContext.jsx';
+import AuthContext from "../context/AuthContext.jsx";
 import { followUser, unfollowUser } from "../services/api";
 
 const PostCard = ({ post, isMyPost, onDelete, loading }) => {
-  const { updatePost  } = useContext(UsePostContext);
+  const { updatePost } = useContext(UsePostContext);
   const [likes, setLikes] = useState(post?.likes?.length || 0);
   const [liked, setLiked] = useState(false);
   const [timeAgo, setTimeAgo] = useState("");
@@ -34,15 +34,15 @@ const PostCard = ({ post, isMyPost, onDelete, loading }) => {
   }, [user, post]);
 
   const handleFollowUnfollow = async (userId) => {
-    if (!userId) return; 
+    if (!userId) return;
 
     setIsFollowing((prev) => !prev);
 
     try {
       if (isFollowing) {
-         await unfollowUser(userId);
+        await unfollowUser(userId);
       } else {
-         await followUser(userId);
+        await followUser(userId);
       }
 
       fetchUser();
@@ -51,14 +51,13 @@ const PostCard = ({ post, isMyPost, onDelete, loading }) => {
     }
   };
 
-  
   const handleCommentAdded = (newComment) => {
     const updatedComments = [newComment, ...comments];
     setComments(updatedComments);
     updatePost({ ...post, comments: [newComment, ...post.comments] });
   };
 
-  const baseUrl = "http://localhost:9999";
+  const baseUrl = "https://social-fullstack-backend.onrender.com";
   const userPic = baseUrl + post.user.profilePic;
 
   const videoRef = useRef(null);
@@ -131,12 +130,10 @@ const PostCard = ({ post, isMyPost, onDelete, loading }) => {
       videoRef.current.muted = isMuted;
     }
   };
-  useEffect(() => { }, [post]);
+  useEffect(() => {}, [post]);
 
   if (loading)
-    return (
-      <h4 className="text-xl font-semibold">Loading posts...</h4>
-    );
+    return <h4 className="text-xl font-semibold">Loading posts...</h4>;
 
   return (
     <div className=" border-gray-200 shadow-xl rounded-lg mb-4 w-full max-w-md relative ">
@@ -215,10 +212,7 @@ const PostCard = ({ post, isMyPost, onDelete, loading }) => {
             disabled={user._id === post.user._id}
             className="flex items-center cursor-pointer space-x-1"
           >
-            <Heart
-              size={23}
-              className={liked ? "text-red-500" : ""}
-            />
+            <Heart size={23} className={liked ? "text-red-500" : ""} />
             <span>
               {likes} {post.likes.includes(user._id) ? "Unlike" : "Like"}
             </span>

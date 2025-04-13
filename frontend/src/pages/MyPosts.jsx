@@ -8,9 +8,12 @@ const MyPosts = () => {
 
   const handleDelete = async (postId) => {
     try {
-      await axios.delete(`http://localhost:9999/api/post/${postId}`, {
-        withCredentials: true,
-      });
+      await axios.delete(
+        `https://social-fullstack-backend.onrender.com/api/post/${postId}`,
+        {
+          withCredentials: true,
+        }
+      );
       setUsersPosts((prev) => prev.filter((post) => post._id !== postId));
     } catch (error) {
       console.error("Error deleting post:", error);

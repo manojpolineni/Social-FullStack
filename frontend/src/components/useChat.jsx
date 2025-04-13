@@ -4,14 +4,17 @@ import axios from "axios";
 const useChat = (socket, userId) => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
-      
+
   useEffect(() => {
     if (!userId) return;
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:9999/api/users", {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          "https://social-fullstack-backend.onrender.com/api/users",
+          {
+            withCredentials: true,
+          }
+        );
         console.log("respo", res.data.users);
         setUsers(res.data.users);
       } catch (error) {

@@ -2,7 +2,7 @@
 // import Auth from "../services/api";
 // import PropTypes from "prop-types";
 // import { io } from "socket.io-client";
-// const socket = io('http://localhost:9999');
+// const socket = io('https://social-fullstack-backend.onrender.com');
 
 // const AuthContext = createContext();
 
@@ -12,7 +12,6 @@
 //     return storedUser ? JSON.parse(storedUser) : null;
 //   });
 //   const [loading, setLoading] = useState(true);
-
 
 //   const fetchUser = async () => {
 //     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -28,7 +27,7 @@
 //     } catch (error) {
 //       console.log("User not authenticated", error.message);
 //       setUser(null);
-//       localStorage.removeItem("user"); 
+//       localStorage.removeItem("user");
 //     }
 //     setLoading(false);
 //   };
@@ -99,7 +98,7 @@ import Auth from "../services/api";
 import PropTypes from "prop-types";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:9999");
+const socket = io("https://social-fullstack-backend.onrender.com");
 
 const AuthContext = createContext();
 

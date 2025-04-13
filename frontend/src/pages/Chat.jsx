@@ -11,7 +11,7 @@ const ChatPage = ({ socket }) => {
   const { users, messages, sendUserMessage, selectedUser, setSelectedUser } =
     useChat(socket, user?._id);
 
-  const [lastMessages, setLastMessages] = useState([]); 
+  const [lastMessages, setLastMessages] = useState([]);
 
   useEffect(() => {
     const savedUser = localStorage.getItem("selectedUser");
@@ -28,13 +28,13 @@ const ChatPage = ({ socket }) => {
     const fetchLastMessages = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:9999/api/messages/last-messages",
+          "https://social-fullstack-backend.onrender.com/api/messages/last-messages",
           {
             withCredentials: true,
           }
         );
         // console.log("last result", res.data.result);
-        setLastMessages(res.data.result); 
+        setLastMessages(res.data.result);
       } catch (err) {
         console.error("❌ Error fetching last messages:", err);
       }

@@ -16,7 +16,7 @@ const CreatePost = ({ isOpen, onClose, onPostCreated }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  if (!isOpen) return null; 
+  if (!isOpen) return null;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -47,16 +47,16 @@ const CreatePost = ({ isOpen, onClose, onPostCreated }) => {
     if (videoFile) formDataToSend.append("video", videoFile);
 
     // console.log("postdata", formData.text);
-    
+
     try {
       const res = await axios.post(
-        "http://localhost:9999/api/post",
+        "https://social-fullstack-backend.onrender.com/api/post",
         formDataToSend,
         {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-          withCredentials: true, 
+          withCredentials: true,
         }
       );
       console.log("post res", res.data);
@@ -67,7 +67,7 @@ const CreatePost = ({ isOpen, onClose, onPostCreated }) => {
       setLoading(false);
       onPostCreated(res.data.post);
       onClose();
-      window.location.href = '/dashboard';
+      window.location.href = "/dashboard";
     } catch (err) {
       setError(err.response?.data?.message || "Failed to create post.");
       setLoading(false);

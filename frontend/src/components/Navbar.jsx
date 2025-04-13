@@ -1,12 +1,20 @@
 import PropTypes from "prop-types";
-import { Menu, Sun, Moon, Bell, User, Image, ChevronDown, ChevronUp } from "lucide-react";
-import { useState , useContext} from "react";
+import {
+  Menu,
+  Sun,
+  Moon,
+  Bell,
+  User,
+  Image,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import man from '../assets/man.jpg';
+import man from "../assets/man.jpg";
 import Notifications from "./Notification";
 import { ThemeContext } from "../context/ThemeContext";
-
 
 const Navbar = ({ toggleSidebar, username = "manoj chowdary" }) => {
   const { user } = useContext(AuthContext);
@@ -59,16 +67,14 @@ const Navbar = ({ toggleSidebar, username = "manoj chowdary" }) => {
         </button>
 
         {/* User Profile Dropdown */}
-        <div
-          className="relative z-10 flex justify-center items-center"
-        >
+        <div className="relative z-10 flex justify-center items-center">
           <button className={`w-11 h-11 cursor-pointer bg-white rounded-full `}>
             <img
               src={
                 profilePic && profilePic.startsWith("http")
                   ? profilePic
                   : profilePic
-                  ? `http://localhost:9999${profilePic}`
+                  ? `https://social-fullstack-backend.onrender.com${profilePic}`
                   : man
               }
               alt="Profile"

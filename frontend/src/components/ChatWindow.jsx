@@ -8,12 +8,12 @@ import SocketContext from "../context/SocketContext";
 import MessageInput from "./MessageInput";
 import { createOrGetChat } from "../utils/chatApi";
 import { playSound } from "../utils/playSound";
-import man from '../assets/man.jpg';
+import man from "../assets/man.jpg";
 
 const ChatWindow = ({ selectedUser }) => {
   const { user } = useContext(AuthContext);
   const { socket, socketReady } = useContext(SocketContext);
-  const {profilePic, userName} = selectedUser || {};
+  const { profilePic, userName } = selectedUser || {};
   const [messages, setMessages] = useState([]);
   const [chatId, setChatId] = useState(null);
   const chatIdRef = useRef(null);
@@ -55,7 +55,7 @@ const ChatWindow = ({ selectedUser }) => {
   const fetchMessages = async (chatId) => {
     try {
       const res = await axios.get(
-        `http://localhost:9999/api/messages/${chatId}`,
+        `https://social-fullstack-backend.onrender.com/api/messages/${chatId}`,
         { withCredentials: true }
       );
       setMessages(res.data.messages);
@@ -196,7 +196,7 @@ const ChatWindow = ({ selectedUser }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:9999/api/messages/send",
+        "https://social-fullstack-backend.onrender.com/api/messages/send",
         newMessage,
         { withCredentials: true }
       );
@@ -227,7 +227,7 @@ const ChatWindow = ({ selectedUser }) => {
             profilePic && profilePic.startsWith("http")
               ? profilePic
               : profilePic
-              ? `http://localhost:9999${profilePic}`
+              ? `https://social-fullstack-backend.onrender.com${profilePic}`
               : man
           }
           alt="Profile"
@@ -268,12 +268,12 @@ const ChatWindow = ({ selectedUser }) => {
                             ? user.profilePic
                               ? user.profilePic.startsWith("http")
                                 ? user.profilePic
-                                : `http://localhost:9999${user.profilePic}`
+                                : `https://social-fullstack-backend.onrender.com${user.profilePic}`
                               : man
                             : msg.senderId?.profilePic
                             ? msg.senderId.profilePic.startsWith("http")
                               ? msg.senderId.profilePic
-                              : `http://localhost:9999${msg.senderId.profilePic}`
+                              : `https://social-fullstack-backend.onrender.com${msg.senderId.profilePic}`
                             : man
                         }
                         alt="User"
@@ -296,9 +296,7 @@ const ChatWindow = ({ selectedUser }) => {
                   </div>
 
                   <div className="chat-footer flex justify-end py-1">
-                    <time className="text-xs ml-2">
-                      {time}
-                    </time>
+                    <time className="text-xs ml-2">{time}</time>
                     {isSender && (
                       <span className="text-sm flex items-center gap-1">
                         {msg.status === "seen" ? (

@@ -12,7 +12,7 @@ export const SocketProvider = ({ children, user }) => {
   useEffect(() => {
     if (!user) return;
 
-    const socket = io("http://localhost:9999", {
+    const socket = io("https://social-fullstack-backend.onrender.com", {
       withCredentials: true,
       transports: ["websocket"],
       reconnectionAttempts: 5,
