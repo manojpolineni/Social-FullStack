@@ -65,11 +65,18 @@ app.use('/api/uploads', uploadRoutes);
 app.use('/api/chat', ChatRoutes);
 app.use('/api/messages', MessagesRoutes);
 
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+// ✅ Serve static files from the frontend's build directory
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
+// ✅ Handle all other routes (SPA fallback)
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-})
+  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"), (err) => {
+    if (err) {
+      console.error("Failed to load index.html:", err);
+      res.status(500).send("Frontend not built. Run `npm run build` in the frontend folder.");
+    }
+  });
+});
 
 //Start the Server
 const PORT = process.env.PORT || 5000;
