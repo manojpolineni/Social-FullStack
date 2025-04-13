@@ -47,27 +47,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/postUploads", express.static(path.join(__dirname, "postUploads")));
 
-// Serve static files from the 'public' directory
-// app.use(express.static(path.join(__dirname, 'public')));
-
-// app.use(express.static(path.join(__dirname, 'frontend', 'build')));
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
-// });
-
-app.use(express.static(path.join(__dirname, '../frontend/build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-});
-
 //MongoDB Connection
-mongoose
-  .connect(MONGO_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => {
-    console.log("❌ MongoDB Connection Error:", err.message);
+mongoose.connect(MONGO_URI).then(() => console.log("MongoDB Connected")).catch((err) => {
+    console.log("MongoDB Connection Error:", err.message);
     process.exit(1);
   });
 
@@ -82,6 +64,12 @@ app.use("/api/post", PostRoutes);
 app.use('/api/uploads', uploadRoutes);
 app.use('/api/chat', ChatRoutes);
 app.use('/api/messages', MessagesRoutes);
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+})
 
 //Start the Server
 const PORT = process.env.PORT || 5000;
