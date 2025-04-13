@@ -24,6 +24,7 @@ const ChatList = ({
     });
   };
 
+  
   const formatLastMessageTime = (dateString) => {
     const messageDate = new Date(dateString);
     const now = new Date();
