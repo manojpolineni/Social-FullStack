@@ -1,5 +1,6 @@
 import axios from "axios";
-const API_URL = "http://localhost:9999/api";
+// const API_URL = "http://localhost:9999/api";
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const sendMessage = async (messageData) => {
   const formattedMessageData = {
