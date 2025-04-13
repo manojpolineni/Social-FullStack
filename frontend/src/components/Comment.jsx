@@ -81,13 +81,13 @@ const CommentSection = ({
       onClick={onClose}
     >
       <div
-        className="bg-white w-full max-w-[450px] h-1/2 left-33.5 rounded-lg p-4 shadow-lg relative transform transition-all duration-300 ease-in-out"
+        className=" w-full max-w-[450px] h-1/2 left-33.5 rounded-lg p-4 shadow-lg relative transform transition-all duration-300 ease-in-out"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-1 right-1 text-black text-2xl"
+          className="absolute top-1 right-1 text-2xl"
         >
           <X size={25} className="cursor-pointer " />
         </button>
@@ -100,13 +100,13 @@ const CommentSection = ({
               .map((comment, index) => (
                 <div
                   key={index}
-                  className="bg-gray-100 px-3 py-3 rounded-md shadow-sm mb-2 flex justify-between items-center"
+                  className=" px-3 py-3 rounded-md shadow-sm mb-2 flex justify-between items-center"
                 >
                   <div>
-                    <p className="text-sm text-gray-800 capitalize font-semibold">
+                    <p className="text-sm capitalize font-semibold">
                       {comment?.text || "No text available"}
                     </p>
-                    <p className="text-xs text-gray-500 mt-2">
+                    <p className="text-xs mt-2">
                       {moment(comment.createdAt)
                         .local()
                         .format("DD-MM-YY hh:mm A")}
@@ -123,7 +123,7 @@ const CommentSection = ({
                 </div>
               ))
           ) : (
-            <p className="text-gray-500 text-sm text-center mt-4">
+            <p className=" text-sm text-center mt-4">
               No comments yet
             </p>
           )}
@@ -149,14 +149,14 @@ const CommentSection = ({
             😀
           </button>
           {showPicker && (
-            <div className="absolute bottom-10 right-10 bg-white border shadow-lg z-10">
+            <div className="absolute bottom-10 right-10 border shadow-lg z-10">
               <EmojiPicker onEmojiClick={handleEmojiSelect} />
             </div>
           )}
           {newComment.trim("").length > 0 && (
             <button
               onClick={handleCommentSubmit}
-              className={`bg-blue-500 text-white rounded-full duration-300 ease-in-out px-2 py-2 cursor-pointer ml-2 ${
+              className={`bg-blue-500 rounded-full duration-300 ease-in-out px-2 py-2 cursor-pointer ml-2 ${
                 loading ? "opacity-50 cursor-not-allowed" : ""
               }`}
               disabled={loading}
