@@ -51,9 +51,9 @@ app.use("/postUploads", express.static(path.join(__dirname, "postUploads")));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve index.html for all other routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'index.html'));
+// });
 
 //MongoDB Connection
 mongoose
