@@ -58,7 +58,8 @@ const ChatWindow = ({ selectedUser }) => {
         `https://social-fullstack-backend.onrender.com/api/messages/${chatId}`,
         { withCredentials: true }
       );
-      setMessages(res.data.messages);
+      console.log('userchats', res?.data?.messages);
+      setMessages(res?.data?.messages);
     } catch (err) {
       console.error(" Fetch error:", err);
     }
