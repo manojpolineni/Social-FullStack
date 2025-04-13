@@ -50,9 +50,10 @@ app.use("/postUploads", express.static(path.join(__dirname, "postUploads")));
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve index.html for all other routes
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
 });
 
 //MongoDB Connection
