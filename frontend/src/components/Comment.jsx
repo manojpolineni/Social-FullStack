@@ -81,7 +81,7 @@ const CommentSection = ({
       onClick={onClose}
     >
       <div
-        className=" w-full max-w-[450px] h-1/2 left-33.5 bg-white dark:bg-gray-200 rounded-lg p-4 shadow-lg relative transform transition-all duration-300 ease-in-out"
+        className=" w-full max-w-[450px] h-1/2 left-33.5 bg-white dark:bg-gray-200 dark:text-gray-800 rounded-lg p-4 shadow-lg relative transform transition-all duration-300 ease-in-out"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
