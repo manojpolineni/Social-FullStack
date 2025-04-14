@@ -191,7 +191,7 @@ const PostCard = ({ post, isMyPost, onDelete, loading }) => {
             className="flex flex-col justify-between text-base font-semibold
           "
           >
-            <span className="text-base  text-black capitalize hover:text-red-400 cursor-pointer">
+            <span className="text-base capitalize hover:text-red-400 cursor-pointer">
               {post?.user?.userName}
             </span>
           </div>
