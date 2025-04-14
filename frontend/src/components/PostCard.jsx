@@ -130,7 +130,19 @@ const PostCard = ({ post, isMyPost, onDelete, loading }) => {
       videoRef.current.muted = isMuted;
     }
   };
-  useEffect(() => {}, [post]);
+  useEffect(() => { }, [post]);
+  
+  const getImageUrl = (imagePath) => {
+    if (!imagePath) return "";
+
+    const backendBase = "https://social-fullstack-backend.onrender.com";
+
+    if (imagePath.startsWith("http")) {
+      return imagePath.replace("http://localhost:9999", backendBase);
+    }
+
+    return `${backendBase}/postUploads/${imagePath}`;
+  };
 
   if (loading)
     return <h4 className="text-xl font-semibold">Loading posts...</h4>;
@@ -142,14 +154,7 @@ const PostCard = ({ post, isMyPost, onDelete, loading }) => {
       {/* Image or Video */}
       {post.image && (
         <img
-          src={
-            post.image.startsWith("http")
-              ? post.image.replace(
-                  "http://localhost:9999",
-                  "https://social-fullstack-backend.onrender.com"
-                )
-              : `https://social-fullstack-backend.onrender.com/postUploads/${post.image}`
-          }
+          src={getImageUrl(post.image)}
           alt="Post"
           className="w-full rounded-lg"
         />
