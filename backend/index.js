@@ -32,6 +32,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/postUploads", express.static(path.join(__dirname, "postUploads")));
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -47,7 +49,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-app.use("/postUploads", express.static(path.join(__dirname, "postUploads")));
 
 //MongoDB Connection
 mongoose.connect(MONGO_URI).then(() => console.log("MongoDB Connected")).catch((err) => {
