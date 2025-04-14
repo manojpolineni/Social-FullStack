@@ -47,7 +47,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-app.use("/postuploads", express.static(path.join(__dirname, "postuploads")));
+app.use("/postUploads", express.static(path.join(__dirname, "postUploads")));
 
 //MongoDB Connection
 mongoose.connect(MONGO_URI).then(() => console.log("MongoDB Connected")).catch((err) => {

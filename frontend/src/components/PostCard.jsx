@@ -141,7 +141,7 @@ const PostCard = ({ post, isMyPost, onDelete, loading }) => {
       return imagePath.replace("http://localhost:9999", backendBase);
     }
 
-    return `${backendBase}/postuploads/${imagePath}`;
+    return `${backendBase}/postUploads/${imagePath}`;
   };
 
   if (loading)
