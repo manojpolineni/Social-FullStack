@@ -7,10 +7,10 @@ export const createPost = async (req, res) => {
 
             const baseUrl = `${req.protocol}://${req.get("host")}`;
             const imageUrl = req.files?.image
-              ? `${baseUrl}/postUploads/${req.files.image[0].filename}`
+              ? `${baseUrl}/postuploads/${req.files.image[0].filename}`
               : "";
             const videoUrl = req.files?.video
-              ? `${baseUrl}/postUploads/${req.files.video[0].filename}`
+              ? `${baseUrl}/postuploads/${req.files.video[0].filename}`
               : "";
             
             const post = new Post({

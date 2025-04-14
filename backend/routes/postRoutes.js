@@ -6,7 +6,7 @@ import multer from 'multer';
 
 const router = express.Router();
 
-const uploadDir = "postUploads/";
+const uploadDir = "postuploads/";
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
