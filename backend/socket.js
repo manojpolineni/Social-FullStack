@@ -5,16 +5,20 @@ export const initializeSocket = (server) => {
   const io = new Server(server, {
     cors: {
       origin: "https://social-fullstack-socialx.onrender.com",
+      methods: ["GET", "POST"],
       credentials: true
     },
-    connectionStateRecovery: {
-      maxDisconnectionDuration: 2 * 60 * 1000, // 2 minutes
-      skipMiddlewares: true
-    }
+    pingTimeout: 60000, // Increased from default 5000
+    pingInterval: 25000,
+    transports: ['websocket', 'polling'], // Explicit transports
+    // connectionStateRecovery: {
+    //   maxDisconnectionDuration: 2 * 60 * 1000, // 2 minutes
+    //   skipMiddlewares: true
+    // }
   });
 
   io.on("connection", (socket) => {
-    console.log("⚡ New user connected:", socket.id);
+    console.log("New user connected:", socket.id);
 
     // User joins a chat room
     socket.on("joinChat", (chatId) => {
@@ -41,7 +45,7 @@ export const initializeSocket = (server) => {
           messageId: updatedMessage._id,
         });
       } catch (err) {
-        console.error("❌ Error updating delivered status:", err.message);
+        console.error("Error updating delivered status:", err.message);
       }
     });
 
@@ -64,13 +68,13 @@ export const initializeSocket = (server) => {
           updatedBy: userId,
         });
       } catch (err) {
-        console.error("❌ Error marking as seen:", err.message);
+        console.error("Error marking as seen:", err.message);
       }
     });
 
     // Disconnect event
     socket.on("disconnect", () => {
-      console.log("❌ User disconnected");
+      console.log("User disconnected", socket.id);
     });
   });
 

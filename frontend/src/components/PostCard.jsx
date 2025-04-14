@@ -273,10 +273,10 @@ const PostCard = ({ post, isMyPost, onDelete, loading }) => {
               </button>
 
               {dropdownOpen && (
-                <div className="absolute right-0 top-6 bg-white shadow-lg rounded-md w-28 cursor-pointer ">
+                <div className="absolute right-0 top-6 shadow-lg rounded-md w-28 cursor-pointer ">
                   <button
                     onClick={() => onDelete(id)}
-                    className="text-sm px-4 py-2 w-full text-left hover:bg-gray-100 cursor-pointer "
+                    className="text-sm px-4 py-2 w-full text-left cursor-pointer "
                   >
                     Delete Post
                   </button>

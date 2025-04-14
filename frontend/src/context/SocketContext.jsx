@@ -13,10 +13,11 @@ export const SocketProvider = ({ children, user }) => {
     if (!user) return;
 
     const socket = io("https://social-fullstack-backend.onrender.com", {
+      transports: ["websocket"], // Force WebSocket only
       withCredentials: true,
+      reconnection:true,
       reconnectionAttempts: 5, // Try reconnecting 5 times
       reconnectionDelay: 1000, // Wait 1 second between attempts
-      transports: ["websocket"], // Force WebSocket only
     });
 
     socketRef.current = socket;
