@@ -77,7 +77,7 @@ const CommentSection = ({
 
   return (
     <div
-      className="fixed inset-0 flex justify-center items-center z-5 bg-opacity-50"
+      className="fixed inset-0 flex justify-center items-center bg-gray-300 z-5 bg-opacity-50"
       onClick={onClose}
     >
       <div
