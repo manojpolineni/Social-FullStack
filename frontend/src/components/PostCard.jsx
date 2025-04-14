@@ -141,7 +141,18 @@ const PostCard = ({ post, isMyPost, onDelete, loading }) => {
 
       {/* Image or Video */}
       {post.image && (
-        <img src={post.image} alt="Post" className="w-full rounded-lg" />
+        <img
+          src={
+            post.image.startsWith("http")
+              ? post.image.replace(
+                  "http://localhost:9999",
+                  "https://social-fullstack-backend.onrender.com"
+                )
+              : `https://social-fullstack-backend.onrender.com/postUploads/${post.image}`
+          }
+          alt="Post"
+          className="w-full rounded-lg"
+        />
       )}
       {post.video && (
         <div className="relative">
